@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\containers",
+    "\\src\\app\\containers\\default-layout",
+    "\\src\\app\\views",
+    "\\src\\app\\views\\vehicles",
+    "\\src\\assets",
+    "\\src\\assets\\img",
+    "\\src\\scss",
+    "\\src\\scss\\shared-styles"
+  ],
+  "SelectedNode": "\\src\\app\\app.module.ts",
+  "PreviewInSolutionExplorer": false
+}
