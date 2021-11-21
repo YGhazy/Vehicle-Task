@@ -9,10 +9,9 @@ namespace Stack.DTOs.Requests
     public class LoginModel
     {
         [Required]
-        public string ERP_USER { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         public string Password { get; set; }
-        public DateTime Date { get; set; }
     }
 }

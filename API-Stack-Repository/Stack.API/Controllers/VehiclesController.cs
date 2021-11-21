@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Stack.API.Controllers
 {
-    [Route("api/Vehicles")]
+    [Route("api/[controller]")]
     [ApiController]
-    // [Authorize] // Require Authorization to access API endpoints . 
+    [Authorize] // Require Authorization to access API endpoints . 
     public class VehiclesController : BaseResultHandlerController<VehicleService>
     {
         public VehiclesController(VehicleService _service) : base(_service)
@@ -22,5 +22,18 @@ namespace Stack.API.Controllers
 
         }
 
+        [HttpGet("GetAllVehicles")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> GetAllVehicles()
+        {
+            return await GetResponseHandler(async () => await service.GetAllVehicles());
+        }
+
+        [HttpGet("CustomerVehiclesPing")]
+        [Authorize(Roles = "Customer")]
+        public async Task<IActionResult> CustomerVehiclesPing()
+        {
+            return await GetResponseHandler(async () => await service.CustomerVehiclesPing());
+        }
     }
 }

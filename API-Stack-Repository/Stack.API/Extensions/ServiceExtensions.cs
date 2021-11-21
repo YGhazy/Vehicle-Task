@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
+using Stack.API.Hubs;
 using Stack.DTOs.Models;
 using Stack.Repository.Common;
 using Stack.ServiceLayer;
@@ -16,8 +17,10 @@ namespace Stack.API.Extensions
         public static void AddBusinessServices(this IServiceCollection caller)
         {
 
-            caller.AddScoped<CustomersService>();
+            caller.AddScoped<ApplicationUsersService>();
             caller.AddScoped<VehicleService>();
+            caller.AddScoped<InitializerService>();
+            caller.AddScoped<NotificationsHub>();
 
         }
 

@@ -20,6 +20,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
+using Stack.API.Hubs;
+using Stack.ServiceLayer;
 
 namespace Stack.API
 {
@@ -40,22 +42,24 @@ namespace Stack.API
         {
             //add mailer service
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.Configure<List<CustomerJson>>(Configuration.GetSection("Customers"));
+
 
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore );
 
 
             //Local server connection strings
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=RFQDB;User ID=sa;Password=P@ssw0rd;"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=VehicleTask;User ID=sa;Password=P@ssw0rd;"));
 
             //Hangfire connection strings
-            services.AddHangfire(x => x.UseSqlServerStorage("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=RFQDB;User ID=sa;Password=P@ssw0rd;"));
+            services.AddHangfire(x => x.UseSqlServerStorage("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=VehicleTask;User ID=sa;Password=P@ssw0rd;"));
             services.AddHangfireServer();
 
             //Add Identity framework . 
-            services.AddIdentity<Customer, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddUserManager<CustomerManager>();
+            .AddUserManager<ApplicationUserManager>();
 
             // Local Server CORS
             services.AddCors(options =>
@@ -162,12 +166,14 @@ namespace Stack.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, InitializerService InitializerService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            InitializerService.Initializer().Wait();
 
             app.UseHttpsRedirection();
 
@@ -194,7 +200,7 @@ namespace Stack.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapHub<NotificationsHub>("/notificationsHub");
+                endpoints.MapHub<NotificationsHub>("/notificationsHub");
             });
 
             //hangFire Job to access  hangfire dashboard

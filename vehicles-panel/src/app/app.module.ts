@@ -36,6 +36,7 @@ import {ConnectionServiceModule} from 'ng-connection-service';
 import { SharedModule } from './views/Shared/shared.module';
 import { VehiclesComponent } from './views/vehicles/vehicles.component';
 import { ButtonModule } from 'primeng/button';
+import { CustomerComponent } from './views/customer/customer.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent,
@@ -82,6 +83,7 @@ const APP_CONTAINERS = [
     P500Component,
     ...APP_CONTAINERS,
     VehiclesComponent,
+    CustomerComponent,
   ],
   providers: [
     { 

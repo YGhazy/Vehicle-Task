@@ -13,10 +13,10 @@ namespace Stack.Core
     public class UnitOfWork
     {
         private readonly ApplicationDbContext context;
-        public UnitOfWork(ApplicationDbContext context, CustomerManager customerManager, RoleManager<IdentityRole> roleManager)
+        public UnitOfWork(ApplicationDbContext context, ApplicationUserManager applicationUserManager, RoleManager<IdentityRole> roleManager)
         {
             this.context = context;
-            CustomerManager = customerManager;
+            ApplicationUserManager = applicationUserManager;
             RoleManager = roleManager;
         }
 
@@ -40,7 +40,7 @@ namespace Stack.Core
             }
             return false;
         }
-        public CustomerManager CustomerManager { get; private set; } //Manager for application users
+        public ApplicationUserManager ApplicationUserManager { get; private set; } //Manager for application users
         public RoleManager<IdentityRole> RoleManager { get; private set; } //Manager for application user roles
 
         private VehicleManager vehicleManager;
@@ -56,7 +56,19 @@ namespace Stack.Core
             }
         }
 
-       
+        private ConnectionIdsManager connectionIdsManager;
+        public ConnectionIdsManager ConnectionIdsManager
+        {
+            get
+            {
+                if (connectionIdsManager == null)
+                {
+                    connectionIdsManager = new ConnectionIdsManager(context);
+                }
+                return connectionIdsManager;
+            }
+        }
+
 
     }
 }

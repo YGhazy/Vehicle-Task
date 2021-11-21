@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
+import { AuthGuardService } from './services/http-services/auth-guard.service';
 import { LoginComponent } from './views/authentication/login/login.component';
+import { CustomerComponent } from './views/customer/customer.component';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { VehiclesComponent } from './views/vehicles/vehicles.component';
@@ -15,13 +17,14 @@ export const routes: Routes = [
     path: '', component: DefaultLayoutComponent, data: {},
     children: [
    
+  { path: 'vehicles', component: VehiclesComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
+  { path: 'customer', component: CustomerComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
 
     ]
   },
-  { path: 'vehicles', component: VehiclesComponent, pathMatch: 'full'},
 
   {
-    path: 'auth', loadChildren: () => import('./views/authentication/authentication.module').then(m => m.AuthenticationModule)
+    path: 'auth', loadChildren: () => import('./views/authentication/authentication.module').then(m => m.AuthenticationModule), canActivateChild: [AuthGuardService] 
   },
   { path: '**', component: P404Component }
 ];

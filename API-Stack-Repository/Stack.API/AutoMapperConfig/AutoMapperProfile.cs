@@ -17,12 +17,15 @@ namespace Stack.API.AutoMapperConfig
             //Mirror mapping between an entity and it's DTO . 
 
             //Mapping an entity and it's DTO while ignorig cyclic dependancy errors . 
-            CreateMap<Customer, CustomerDTO>().ReverseMap();
+            CreateMap<ApplicationUser, ApplicationUserDTO>()
+            .ForMember(dest => dest.Vehicles, opt => opt.Ignore())
+
+                .ReverseMap();
 
             CreateMap<Vehicle, VehicleDTO>()
+            //.ForMember(dest => dest.Customer, opt => opt.Ignore())
             .ReverseMap();
 
-            //.ForMember(dest => dest.Department, opt => opt.Ignore())
 
 
         }

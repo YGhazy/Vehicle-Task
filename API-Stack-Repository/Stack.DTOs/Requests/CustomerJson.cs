@@ -5,18 +5,11 @@ using System.Text;
 
 namespace Stack.DTOs.Requests
 {
-    //Basic Registration Model . 
-    public class RegisterModel
+    public class CustomerJson
     {
-        [Required]
-        [MaxLength(256)]
         public string UserName { get; set; }
-
-
-        [Required]
-        public string Password { get; set; }
-
-
+        public string Address { get; set; }
+        public List<VehicleJson> Vehicles { get; set; }
 
     }
 }

@@ -1,18 +1,18 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
 
-namespace Stack.Entities.Models
+namespace Stack.DTOs.Models
 {
-    public class Customer : IdentityUser
+    public class CreateCustomerModel
     {
+
         public string Address { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
 
     }
-
 }

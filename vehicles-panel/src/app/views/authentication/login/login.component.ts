@@ -61,10 +61,10 @@ export class LoginComponent {
         }
         this.isLoading = false
         let role = this.authenticationService.getUserRole();
-        if (role == "LeadGenerationtDataEntry")
-          this.router.navigate(['/main/contacts/create-contact']);
+        if (role == "Administrator")
+          this.router.navigate(['/vehicles']);
         else
-          this.router.navigate(['/main']);
+          this.router.navigate(['/customer']);
       }
     }, error => {
       this.isLoading = false
