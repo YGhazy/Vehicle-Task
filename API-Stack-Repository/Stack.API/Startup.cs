@@ -53,8 +53,8 @@ namespace Stack.API
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=VehicleTask;User ID=sa;Password=P@ssw0rd;"));
 
             //Hangfire connection strings
-            services.AddHangfire(x => x.UseSqlServerStorage("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=VehicleTask;User ID=sa;Password=P@ssw0rd;"));
-            services.AddHangfireServer();
+            //services.AddHangfire(x => x.UseSqlServerStorage("Server=B-YASMIN-GHAZY\\SQLEXPRESS; Database=VehicleTask;User ID=sa;Password=P@ssw0rd;"));
+            //services.AddHangfireServer();
 
             //Add Identity framework . 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -204,7 +204,7 @@ namespace Stack.API
             });
 
             //hangFire Job to access  hangfire dashboard
-            app.UseHangfireDashboard("/mydashboard");
+            //app.UseHangfireDashboard("/mydashboard");
 
 
         }
