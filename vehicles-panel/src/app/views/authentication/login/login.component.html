@@ -18,12 +18,9 @@
                      class="alert alert-danger">
                   <div [ngClass]="{'text-left': currentLang == 'en', 'text-right': currentLang == 'en' }"
                        *ngIf="loginFormControls.userName.errors.required " style="text-align: center">
-                    {{langVar.invalid.requiredEmail}}
+                    User name required
                   </div>
-                  <div [ngClass]="{'text-left': currentLang == 'en', 'text-right': currentLang == 'en' }"
-                       *ngIf="loginFormControls.password.errors.pattern" style="text-align: center">
-                    {{langVar.invalid.invalidEmail}}
-                  </div>
+  
                 </div>
               </div>
 

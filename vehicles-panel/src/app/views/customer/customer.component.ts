@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CustomerService } from '../../services/Customer.service';
 import { Howl, Howler } from 'howler';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customer',
@@ -14,6 +15,7 @@ export class CustomerComponent implements OnInit {
   customer;
   pingTone
   isPing: boolean = false
+  subscription: Subscription;
 
   constructor(private authService: AuthenticationService, private router: Router, private customerService: CustomerService) { }
 
@@ -40,9 +42,14 @@ export class CustomerComponent implements OnInit {
 
     this.CustomerVehiclesPing()
 
-    setTimeout(() => {
-      this.CustomerVehiclesPing()
-    }, 60000);
+    const source = interval(60000);
+    this.subscription = source.subscribe(val => this.CustomerVehiclesPing());
+
+
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   Logout() {
