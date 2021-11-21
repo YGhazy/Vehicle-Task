@@ -50,7 +50,7 @@
    
    *Admin
    
-    > All vehicles view with their updated status and last ping time every pinf from the vehicle.
+    > All vehicles view with their updated status and last ping time every ping from the vehicle.
     > signalR Connection will start after load vehicles page listening to any "ping" hub to update the list.
    
    And logout for both
@@ -111,7 +111,7 @@
  
  * stack.ServiceLayer
      
-    > All services where you can inject ( automapper ,configuration, IOptions , unitOfWork , any other service ) and use them without create new object for each one
+    > All services where you can inject ( automapper ,configuration, IOptions , unitOfWork , any other service ) and use them without create new object for each one.
  
  
  
