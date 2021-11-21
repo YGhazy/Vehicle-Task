@@ -42,7 +42,7 @@ export class VehiclesComponent implements OnInit {
       return console.error(err.toString());
     });
 
-    this.connection.on("newNotification", () => {
+    this.connection.on("ping", () => {
       console.error("ping ");
       this.GetAllVehicles()
       this.pingTone.play();
