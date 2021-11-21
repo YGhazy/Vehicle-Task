@@ -62,12 +62,19 @@ export class CustomerComponent implements OnInit {
     this.customerService.CustomerVehiclesPing().subscribe(res => {
       if (res.succeeded) {
         this.isPing = false
-
+        this.customer=res.data
         this.pingTone.play();
         console.log(res.data)
       }
     }, error => {
         this.isPing = false
     });
+  }
+
+  checkDate(lastPing: Date) {
+    if (new Date(lastPing).getFullYear() !== 1) //avoid display initial date
+      return true
+    else
+      return false
   }
 }

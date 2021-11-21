@@ -121,9 +121,9 @@ namespace Stack.ServiceLayer
             }
         }
 
-        public async Task<ApiResponse<bool>> CustomerVehiclesPing( )
+        public async Task<ApiResponse<ApplicationUserDTO>> CustomerVehiclesPing( )
         {
-            ApiResponse<bool> result = new ApiResponse<bool>();
+            ApiResponse<ApplicationUserDTO> result = new ApiResponse<ApplicationUserDTO>();
             try
             {
                 var userID = await HelperFunctions.GetUserID(httpContextAccessor);
@@ -147,22 +147,28 @@ namespace Stack.ServiceLayer
 
                             if (!saveResult)
                             {
-
                                 result.Succeeded = false;
-                                result.Data = false;
                                 result.Errors.Add("Failed to update Vehicle :" + Vehicle.Number);
                                 return result;
 
                             }
                         }
+                        var config = new MapperConfiguration(
+                         cfg =>
+                           {
+                             cfg.CreateMap<ApplicationUser, ApplicationUserDTO>();
+                             cfg.CreateMap<Vehicle, VehicleDTO>()
+                            .ForMember(a => a.Customer, opt => opt.Ignore());
+
+                          });
+                        var _mapper = config.CreateMapper();
+                        result.Data = _mapper.Map<ApplicationUserDTO>(user);
                         result.Succeeded = true;
-                        result.Data = true;
                         return result;
                     }
                     else
                     {
                         result.Succeeded = false;
-                        result.Data = false;
                         result.Errors.Add("Failed to find current customer ");
                         return result;
 
@@ -171,12 +177,11 @@ namespace Stack.ServiceLayer
                 else
                 {
                     result.Succeeded = false;
-                    result.Data = false;
                     result.Errors.Add("Failed to find current customer ");
                     return result;
 
                 }
-             
+
 
             }
             catch (Exception ex)

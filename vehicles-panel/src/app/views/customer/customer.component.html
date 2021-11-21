@@ -17,8 +17,10 @@
              [paginator]="true" [rows]="6" styleClass="prime-slider-override mt-5 mb-5">
       <ng-template pTemplate="colgroup" let-columns>
         <colgroup>
-          <col style="width:250px">
-          <col style="width:250px">
+          <col style="width:150px">
+          <col style="width:150px">
+          <col style="width:150px">
+          <col style="width:150px">
 
         </colgroup>
       </ng-template>
@@ -26,6 +28,8 @@
         <tr>
           <th class="text-center">VIN</th>
           <th class="text-center">Number</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">Last Ping</th>
 
         </tr>
       </ng-template>
@@ -34,7 +38,8 @@
 
           <td class="text-center">{{Vehicle.vin}}</td>
           <td class="text-center">{{Vehicle.number}}</td>
-
+          <td class="text-center {{Vehicle.status}}" style="font-weight:500">{{Vehicle.status}}</td>
+          <td class="text-center"><strong *ngIf="checkDate(Vehicle.lastPing)">{{Vehicle.lastPing  | date: 'short'}}</strong></td>
 
         </tr>
       </ng-template>
