@@ -7,7 +7,7 @@
  * Select "stack.DAL" then Run "Update-database" (to run database migrations) in package manager console and check Database Tables in MSSQL
  * Run the project and it'll run automatically run on `https://localhost:44307/swagger`.
  
-   > Initializer()'ll excute automatically to initlize the customers and vehicles data, 
+   > Initializer()'ll excute automatically to initialize the customers and vehicles data, 
    > you can check the initizalized data in appsettings.json in stack.API .
 
  **For Deployment purpose**
