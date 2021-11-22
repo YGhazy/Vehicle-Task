@@ -72,10 +72,14 @@
    > ServiceExtensions : call all services in service layer for **Dependency injection /IOC purpose**
    
    > startup : all startup configuration 
-           > Add and configure services and Dependency injection, in the configurationService()
-           > Configure an HTTP request pipline by adding middlewares( authentication ,authorization, routing ,..) in Configure()
-           > Adding Swagger , SignalR , hangefire,..
-           > any initialization methods
+  
+      >> Add and configure services and Dependency injection, in the configurationService()
+           
+      >> Configure an HTTP request pipline by adding middlewares( authentication ,authorization, routing ,..) in Configure()
+           
+      >> Adding Swagger , SignalR , hangefire,.
+           
+      >> any initialization methods
            
     > program.cs : where the application starts
     
