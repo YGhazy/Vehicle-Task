@@ -71,19 +71,26 @@
    
    > ServiceExtensions : call all services in service layer for **Dependency injection /IOC purpose**
    
+  
    > startup : all startup configuration 
   
-      >> Add and configure services and Dependency injection, in the configurationService()
+      >* Add and configure services and Dependency injection, in the configurationService()
            
-      >> Configure an HTTP request pipline by adding middlewares( authentication ,authorization, routing ,..) in Configure()
+      >* Configure an HTTP request pipline by adding middlewares( authentication ,authorization, routing ,..) in Configure()
            
-      >> Adding Swagger , SignalR , hangefire,.
+      >* Adding Swagger , SignalR , hangefire,.
            
-      >> any initialization methods
+      >* any initialization methods
            
-    > program.cs : where the application starts
+  
+   > program.cs : where the application starts
     
-    > appsettings.json : Using by Configuration to get values by inject IOptions<T> into the constructor of the class you want to get values on
+      >* Create a HostBuilder object used to setup and build the IHost which will host the web app.
+      
+      >* We can think the host as being a wrapper around the web server (resposible for app startup and lietime managment) 
+    
+   
+   > appsettings.json : Using by Configuration to get values by inject IOptions<T> into the constructor of the class you want to get values on
 
  * stack.Core
       
