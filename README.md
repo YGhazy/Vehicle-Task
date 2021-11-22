@@ -90,7 +90,7 @@
       >* We can think the host as being a wrapper around the web server (resposible for app startup and lietime managment) 
     
    
-   > appsettings.json : Using by Configuration to get values by inject IOptions<T> into the constructor of the class you want to get values on
+   > appsettings.json : Based on key/value settings that can be retrieved from a variety of resources, once retrieved they can easily accessed using DI via literal strings using      IConfiguration, To get values by inject IOptions<T> into the constructor of the class you want to get values on
 
  * stack.Core
       
