@@ -43,7 +43,8 @@
 
 * Save JWT token in session/local storage depend on checking  **remember me** 
 * After login 
-   *Customer
+  
+  *Customer
     
     > user name , address and his vehicles.
     > vehicles'll be updated by random status every 1 min and send "ping" hub to admin to trigger the changes immediately.
