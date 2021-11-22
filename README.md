@@ -87,7 +87,7 @@
     
       >* Create a HostBuilder object used to setup and build the IHost which will host the web app.
       
-      >* We can think the host as being a wrapper around the web server (resposible for app startup and lietime managment) 
+      >* We can think the host as being a wrapper around the web server (responsible for app startup and lifetime managment) 
     
    
    > appsettings.json : Based on key/value settings that can be retrieved from a variety of resources, once retrieved they can easily accessed using DI via literal strings using      IConfiguration, To get values by inject IOptions<T> into the constructor of the class you want to get values on
@@ -104,7 +104,7 @@
  
   * stack.DTO
     
-    > mirrir DTO to db entities 
+    > mirror DTO to db entities 
     > requests models
     > Any customized object
     > Enums
